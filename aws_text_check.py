@@ -12,8 +12,7 @@ def write_json_conf(data, fp):
         json.dump(data, file, indent=4, separators=(',', ': '), sort_keys=True)
 
 
-with open(aws_conf_fn) as f:
-    aws_conf = json.load(f)
+
 
 if not os.path.isfile(aws_conf_fn):
     print(f'Please edit "{aws_conf_fn}"')
@@ -28,18 +27,20 @@ if not os.path.isfile(aws_conf_fn):
     )
     sys.exit()
 
+with open(aws_conf_fn) as f:
+    aws_conf = json.load(f)
+
 if not aws_conf:
     print('Empty AWS credentials')
     sys.exit()
+
+
 
 comprehend = boto3.client(**aws_conf)
 
 comment_list = sys.argv[1:]
 if len(sys.argv) == 1:
     print('Please add some text!!!\nFor example:\n{} {} "This movie is bad"'.format(sys.executable, sys.argv[0]))
-
-for text in comment_list:
-    json_resp = comment_list.detect_sentiment()
 
 for text in comment_list:
     json_resp = comprehend.detect_sentiment(Text=text, LanguageCode='en')
