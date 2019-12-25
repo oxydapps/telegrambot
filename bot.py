@@ -94,7 +94,7 @@ def filter_text(text):
     return ' '.join(result)
 
 
-def echo_view(update):
+def echo_view(update, context):
     msg = update.message.to_dict()
     msg_type = (msg.get('chat', {}).get('type'))
     text = msg.get('text')
