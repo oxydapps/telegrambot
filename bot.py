@@ -108,7 +108,7 @@ def echo_view(update, context):
 
     if any(['dpaste' in text, 'github' in text]):
         update.message.bot.send_message('новый код найден', parse_mode='HTML', quote=True)
-    elif 'привет' in msg.get('text'):
+    elif 'привет' in msg.get('text').lower():
         update.message.reply_html('привет человек', parse_mode='HTML', quote=True)
 
     #это, если бот подключен к чату и можно с собакой передавать ему текст
@@ -117,12 +117,12 @@ def echo_view(update, context):
     #     if entities[0]['type'] == 'mention':
     #         update.message.reply_html(process_text(text)['sentiment'], quote=True)
 
-    # боту в личку писать и он подключается к анализатору aws
-    # if msg_type == 'private':
-    #     print('TEST')
-    #     f_text = filter_text(text)
-    #     update.message.reply_html(process_text(f_text))
-    #     update.message.reply_html(process_text(f_text)['sentiment'])
+    #боту в личку писать и он подключается к анализатору aws
+    else:
+        if msg_type == 'private':
+            f_text = filter_text(text)
+            update.message.reply_html(process_text(f_text))
+            update.message.reply_html(process_text(f_text)['sentiment'])
 
 
 def error_view(update, context):
