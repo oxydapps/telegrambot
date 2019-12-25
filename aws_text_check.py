@@ -3,7 +3,7 @@ import json
 import sys
 import os
 
-aws_conf: Dict[Any, Any]
+aws_conf = dict()
 aws_conf_fn = 'aws.json'
 
 
