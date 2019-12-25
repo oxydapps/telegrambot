@@ -1,14 +1,14 @@
 # telegrambot
-`take token from telegram`
+take token from telegram
 
-`take token from aws`
+take token from aws
 
-`run bot`
+run bot
 
-`stop bot`
+stop bot
 
-`paste your telegram token in conf_bot.json`
+paste your telegram token in conf_bot.json
 
-`paste your aws token in aws.json`
+paste your aws token in aws.json
 
-`enjoy your smart first bot`
+enjoy your smart first bot
