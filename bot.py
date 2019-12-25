@@ -5,7 +5,9 @@ import logging
 import telegram
 from pprint import pprint
 from threading import Thread
-from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters)
+from telegram.ext import Updater
+from telegram.ext import (CommandHandler, MessageHandler, Filters, RegexHandler,
+                          CallbackQueryHandler, ConversationHandler, InlineQueryHandler, BaseFilter)
 
 
 def write_json_conf(data, fp):
@@ -67,6 +69,7 @@ def process_img(fp):
 
 def photo_view(update, context):
     msg = update.message.to_dict()
+    msg_type = msg.get('chat', {}).get('type')
 
     tmp_dir = os.path.join('predictor', 'tmp')
     if not os.path.isdir(tmp_dir):
